@@ -1,0 +1,79 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Lineup",
+  "colors": {
+    "primary": "#0A0A0A",
+    "light": "#5865F2",
+    "dark": "#5865F2"
+  },
+  "favicon": "/favicon.ico",
+  "navbar": {
+    "links": [
+      {
+        "label": "Dashboard",
+        "href": "https://lnup.pro/auth"
+      },
+      {
+        "label": "Suporte",
+        "href": "https://lnup.pro/suporte"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Criar workspace",
+      "href": "https://lnup.pro/auth"
+    }
+  },
+  "api": {
+    "openapi": "api-reference/openapi.yaml"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guias",
+        "groups": [
+          {
+            "group": "Comece aqui",
+            "pages": ["index", "quickstart"]
+          },
+          {
+            "group": "Conceitos",
+            "pages": [
+              "concepts/inbox",
+              "concepts/discord-plugin",
+              "concepts/public-chat"
+            ]
+          },
+          {
+            "group": "Guias de integração",
+            "pages": [
+              "guides/create-ticket",
+              "guides/connect-discord",
+              "guides/ai-tools",
+              "guides/commands"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Visão geral",
+            "pages": ["api-reference/overview"]
+          },
+          {
+            "group": "OpenAPI",
+            "openapi": "api-reference/openapi.yaml"
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "website": "https://lnup.pro"
+    }
+  }
+}
