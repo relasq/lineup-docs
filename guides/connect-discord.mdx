@@ -1,0 +1,68 @@
+---
+title: "Conectar o Discord Plugin"
+description: "Transforme um bot Discord em canal de entrada da Inbox."
+---
+
+## O que você precisa
+
+<CardGroup cols={3}>
+  <Card title="Bot Token" icon="key">
+    Copie na seção Bot do Discord Developer Portal.
+  </Card>
+  <Card title="Public Key" icon="shield">
+    Copie em General Information. Não use Client Secret.
+  </Card>
+  <Card title="Inbox" icon="inbox">
+    Escolha a Inbox que receberá os tickets abertos pelo Discord.
+  </Card>
+</CardGroup>
+
+## Passo a passo
+
+<Steps>
+  <Step title="Abra Plugins na Inbox">
+    No dashboard, entre na Inbox e clique em Plugins.
+  </Step>
+  <Step title="Cole as credenciais">
+    Informe Bot Token e Public Key. A Lineup valida os campos antes de
+    registrar.
+  </Step>
+  <Step title="A API configura o endpoint">
+    A Lineup chama a API do Discord para atualizar
+    <code>interactions_endpoint_url</code> da aplicação.
+  </Step>
+  <Step title="Publique mensagens">
+    Use Mensagens do plugin para enviar uma mensagem com botão de abrir ticket
+    em um canal do servidor.
+  </Step>
+</Steps>
+
+## Como a documentação trata o bot
+
+<AccordionGroup>
+  <Accordion title="Rotas de conexão">
+    As rotas de conexão do plugin ficam fora de <code>/v1</code> e usam sessão
+    da Lineup:
+
+    ```http
+    GET /inboxes/:inboxId/plugins/discord
+    POST /inboxes/:inboxId/plugins/discord
+    POST /inboxes/:inboxId/plugins/discord/:botId/configure
+    ```
+
+  </Accordion>
+  <Accordion title="Rotas públicas do plugin">
+    Para automação externa, use as rotas <code>/v1/bots...</code>. Elas são
+    documentadas como Discord Plugin porque operam tickets originados ou
+    vinculados ao bot.
+  </Accordion>
+  <Accordion title="Interaction endpoint">
+    A Lineup mantém o endpoint correto e um worker da API verifica a
+    configuração periodicamente.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  Nunca conecte o bot de login OAuth da Lineup como bot de atendimento. Use a
+  aplicação Discord que realmente receberá comandos, botões e interações.
+</Warning>
