@@ -119,7 +119,7 @@ paths:
       operationId: updateInboxTicket
       tags: [Inbox Tickets]
       summary: Atualizar ticket da Inbox
-      description: Atualiza status, arquivamento, privacidade e IA do ticket.
+      description: Atualiza nome, status, arquivamento, privacidade e IA do ticket.
       requestBody:
         required: true
         content:
@@ -519,6 +519,10 @@ components:
     UpdateInboxTicketInput:
       type: object
       properties:
+        title:
+          type: string
+          minLength: 2
+          maxLength: 80
         status:
           type: string
           enum: [open, suspended, closed]
@@ -531,6 +535,10 @@ components:
     UpdateDiscordTicketInput:
       type: object
       properties:
+        title:
+          type: string
+          minLength: 2
+          maxLength: 80
         status:
           type: string
           enum: [open, suspended, closed]
