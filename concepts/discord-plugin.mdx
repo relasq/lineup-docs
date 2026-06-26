@@ -1,95 +1,90 @@
 ---
 title: "Discord Plugin"
-description: "Como o bot Discord fica documentado agora que ele Ã© uma integraÃ§Ã£o da Inbox."
+description: "Como o bot Discord funciona como integração de entrada da Inbox."
 ---
 
-O bot Discord nÃ£o Ã© mais tratado como produto separado. Ele Ã© um plugin que
-conecta servidores Discord a uma Inbox.
+O bot Discord não é um produto separado. Ele é um plugin conectado a uma Inbox:
+o Discord abre tickets, mas atendimento, equipe, cargos, IA, comandos,
+auditoria, mensagens e ferramentas ficam no workspace principal.
 
 <Note>
-  Na API pÃºblica, as rotas <code>/v1/bots...</code> continuam existindo para
-  automaÃ§Ãµes e compatibilidade. Na documentaÃ§Ã£o e no produto, elas aparecem como
-  rotas do <strong>Discord Plugin</strong>.
+  Na API pública, <code>/v1/bots</code> existe apenas para listar plugins Discord
+  conectados por compatibilidade. Use as rotas da Inbox para operar tickets e
+  mensagens.
 </Note>
 
 ## O que muda
 
 <CardGroup cols={2}>
-  <Card title="Antes" icon="robot">
-    O bot parecia um workspace isolado, com pÃ¡ginas prÃ³prias e uma narrativa
-    separada da Inbox.
+  <Card title="Entrada pelo Discord" icon="discord">
+    O bot recebe interações, botões e mensagens configuradas para abrir tickets
+    dentro da Inbox.
   </Card>
-  <Card title="Agora" icon="plug">
-    O Discord fica em Plugins dentro da Inbox. A sidebar mostra uma Ãºnica aÃ§Ã£o:
-    <strong>Configurar</strong>, que abre a visÃ£o do plugin Discord.
+  <Card title="Operação na Inbox" icon="inbox">
+    Tickets, participantes, IA, comandos, ferramentas, equipe e auditoria ficam
+    na Inbox, sem duplicar painel.
   </Card>
 </CardGroup>
 
 ## Como conectar
 
 <Steps>
-  <Step title="Abra a Inbox">VÃ¡ em Dashboard â†’ Inbox â†’ Plugins.</Step>
+  <Step title="Abra a Inbox">Vá em Dashboard > Inbox > Plugins.</Step>
   <Step title="Conecte o Discord">
-    Informe o Bot Token e a Public Key da aplicaÃ§Ã£o que receberÃ¡ interaÃ§Ãµes.
+    Informe o Bot Token e a Public Key da aplicação que receberá interações.
   </Step>
   <Step title="A Lineup registra o endpoint">
     A API configura o <code>interactions_endpoint_url</code> no Discord e valida
-    assinatura, PING e URL pÃºblica.
+    assinatura, PING e URL pública.
   </Step>
-  <Step title="Configure o plugin">
-    Depois de conectado, clique em <strong>Configurar</strong> para abrir a
-    visÃ£o do Discord Plugin.
+  <Step title="Configure o bot">
+    Depois de conectar, clique em <strong>Configurar Bot</strong> para ajustar
+    servidores, mensagens e configurações específicas do Discord.
   </Step>
 </Steps>
 
 ## Rotas relacionadas
 
 <Tabs>
-  <Tab title="ConfiguraÃ§Ã£o pelo dashboard">
-    Estas rotas usam sessÃ£o da Lineup, nÃ£o token <code>lup_</code>.
+  <Tab title="Dashboard">
+    Estas rotas usam sessão da Lineup, não token <code>lup_</code>.
 
     ```http
     GET /inboxes/:inboxId/plugins/discord
     POST /inboxes/:inboxId/plugins/discord
     POST /inboxes/:inboxId/plugins/discord/:botId/configure
+    DELETE /inboxes/:inboxId/plugins/discord/:botId
     ```
-
   </Tab>
-  <Tab title="AutomaÃ§Ã£o pela API pÃºblica">
-    Estas rotas usam <code>Authorization: Bearer lup_...</code> e operam tickets
-    do Discord Plugin.
+  <Tab title="API pública">
+    A API pública expõe apenas a listagem de plugins Discord conectados. Para
+    tickets, mensagens, participantes e ferramentas, use as rotas da Inbox.
 
     ```http
     GET /v1/bots
-    GET /v1/bots/:botId/tickets
-    POST /v1/bots/:botId/tickets
-    GET /v1/bots/:botId/tickets/:ticketId
-    PATCH /v1/bots/:botId/tickets/:ticketId
-    DELETE /v1/bots/:botId/tickets/:ticketId
     ```
-
   </Tab>
 </Tabs>
 
 <Warning>
-  O Bot Token do Discord nunca deve ser usado como token da API pÃºblica da
-  Lineup. Para integraÃ§Ãµes externas, use apenas tokens <code>lup_</code>.
+  O Bot Token do Discord nunca deve ser usado como token da API pública da
+  Lineup. Para integrações externas, use apenas tokens <code>lup_</code>.
 </Warning>
 
 ## Quando usar o Discord Plugin
 
 <CardGroup cols={2}>
   <Card title="Comunidades" icon="users">
-    Abra tickets a partir de mensagens, botÃµes e canais de um servidor.
+    Abra tickets a partir de mensagens, botões e canais de um servidor.
   </Card>
   <Card title="Suporte em servidor" icon="server">
-    A equipe jÃ¡ atende no Discord, mas precisa de histÃ³rico, permissÃµes e chat
-    pÃºblico fora do canal.
+    A equipe já atende no Discord, mas precisa de histórico, permissões e chat
+    público fora do canal.
   </Card>
-  <Card title="Mensagens com botÃ£o" icon="message">
-    Publique mensagens configuradas com botÃ£o de abrir ticket.
+  <Card title="Mensagens com botão" icon="message">
+    Publique mensagens configuradas com botão de abrir ticket.
   </Card>
-  <Card title="MÃ©todo de entrada" icon="plug">
-    Use o Discord para abrir tickets na Inbox sem duplicar a operaÃ§Ã£o.
+  <Card title="Método de entrada" icon="plug">
+    Use o Discord para abrir tickets na Inbox sem duplicar a operação.
   </Card>
 </CardGroup>

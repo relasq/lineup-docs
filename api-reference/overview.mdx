@@ -46,15 +46,13 @@ Authorization: Bearer lup_seu_token
     ```
 
   </Tab>
-  <Tab title="Discord Plugin">
-    Rotas para automaÃ§Ã£o de tickets vinculados ao bot Discord. O nome do path
-    continua <code>/v1/bots</code> por compatibilidade, mas o produto trata isso
-    como plugin da Inbox.
+  <Tab title="Plugins">
+    Rotas para consultar integrações conectadas. O Discord aparece em
+    <code>/v1/bots</code> por compatibilidade, mas tickets, mensagens,
+    participantes e ferramentas ficam nas rotas da Inbox.
 
     ```http
     /v1/bots
-    /v1/bots/:botId/tickets
-    /v1/bots/:botId/tickets/:ticketId/participants
     ```
 
   </Tab>

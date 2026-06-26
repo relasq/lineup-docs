@@ -32,7 +32,7 @@ description: "Transforme um bot Discord em canal de entrada da Inbox."
     <code>interactions_endpoint_url</code> da aplicação.
   </Step>
   <Step title="Configure o plugin">
-    Depois de conectar, clique em <strong>Configurar</strong> para abrir a visão
+    Depois de conectar, clique em <strong>Configurar Bot</strong> para abrir a visão
     do Discord Plugin e ajustar o canal de entrada.
   </Step>
 </Steps>
@@ -51,10 +51,10 @@ description: "Transforme um bot Discord em canal de entrada da Inbox."
     ```
 
   </Accordion>
-  <Accordion title="Rotas públicas do plugin">
-    Para automação externa, use as rotas <code>/v1/bots...</code>. Elas são
-    documentadas como Discord Plugin porque operam tickets originados ou
-    vinculados ao bot.
+  <Accordion title="API p�blica">
+    A API p�blica exp�e <code>GET /v1/bots</code> para listar plugins Discord
+    conectados. Depois que um ticket existe na Inbox, use as rotas da Inbox
+    para mensagens, participantes, transcript e ferramentas.
   </Accordion>
   <Accordion title="Interaction endpoint">
     A Lineup mantém o endpoint correto e um worker da API verifica a
