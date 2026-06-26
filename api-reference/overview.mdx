@@ -35,12 +35,14 @@ Authorization: Bearer lup_seu_token
 
 <Tabs>
   <Tab title="Core API">
-    Rotas para Inboxes, tickets sem Discord, mensagens e transcripts.
+    Rotas para Inboxes, tickets, mensagens, transcripts e solicitações de
+    ferramentas da IA.
 
     ```http
     /v1/inboxes
     /v1/inboxes/:inboxId/tickets
     /v1/inboxes/:inboxId/tickets/:ticketId/messages
+    /v1/inboxes/:inboxId/tickets/:ticketId/tool-requests
     ```
 
   </Tab>
