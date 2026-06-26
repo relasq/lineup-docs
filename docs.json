@@ -49,9 +49,7 @@
             "group": "Guias de integração",
             "pages": [
               "guides/create-ticket",
-              "guides/connect-discord",
-              "guides/ai-tools",
-              "guides/commands"
+              "guides/connect-discord"
             ]
           }
         ]
